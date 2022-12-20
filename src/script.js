@@ -14,26 +14,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 const response = await data.json();
 
                 for(let i = 0; i < response.length; i++) {
+                    const description = response[i].description;
+                    const title = response[i].title;
+                    products.innerHTML += `
+                    <div class="product">
+                        <img src="${response[i].images[1]}" alt="${response[i].category.name}" class="product-image">
+                        <div class="product-content">
+                        <h2 class="product-title">${title.length > 18 ? title.substring(0, 18).concat('...') : title}
+                        </h2>
+                        <h3 class="product-category">${response[i].category.name}</h3>
+                        <p class="product-description">${
+                            description.length > 80
+                            ? description.substring(0, 80).concat(' ...more')
+                            : description}
+                        </p>
+                        <div class="product-price-container">
+                            <h3 class="product-price">$${response[i].price}
+                            </h3>
+                            <a href="" data-productId="${
+                                response[i].id}" class="add-to-cart"><ion-icon name="cart-outline"></ion-icon></a>
+                        </div>
+                        </div>
+                    </div>
+                    `
                 }
 
             } 
 
         }
-        
-        
-        //console.log(response);
-        const product_info = `
-            <div class="product">
-                <img src="" alt="" class="product-image">
-                <h2 class="product-title"></h2>
-                <h3 class="product-category"></h3>
-                <p class="product-description"></p>
-                <div class="product-price-container">
-                    <h3 class="product-price"></h3>
-                    <a href="" class="add-to-cart"></a>
-                </div>
-            </div>
-        `
-    }
+    //     catch (err) {
+    //         console.log(err)
+    //     }
+    // }
     //fetchProducts('https://api.escuelajs.co/api/v1/products');
 });
