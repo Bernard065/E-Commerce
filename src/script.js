@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    //create variables
+    const products = document.querySelector('.products');
+    
     //async function to fetch products from the public API
     async function fetchProducts(url) {
         const data = await fetch(url);
