@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     //create variables
-    const url = `https://api.escuelajs.co/api/v1/products?offset=0&limit=5`
+    const url = `https://api.escuelajs.co/api/v1/products`
     const products = document.querySelector('.products');
     let dataset = 0;
 
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } 
 
         }
-    //     catch (err) {
-    //         console.log(err)
-    //     }
-    // }
-    //fetchProducts('https://api.escuelajs.co/api/v1/products');
+        catch (err) {
+            console.log(err);
+        }
+    }
+    fetchProducts(url);
 });
